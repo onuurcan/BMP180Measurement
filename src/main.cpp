@@ -20,11 +20,8 @@ void handleData();
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET); //create a SSD1306 object
 Adafruit_BMP085 bmp; //create a BMP180 object
 
-//const char *ssid = "YOUR_WIFI_SSID";
-//const char *password = "YOUR_WIFI_PASSWORD";
-
-const char *ssid = "Mimoza";
-const char *password = "Whoisonline45603";
+const char *ssid = "YOUR_WIFI_SSID";
+const char *password = "YOUR_WIFI_PASSWORD";
 
 ESP8266WebServer server(80); //create a server object
 
@@ -46,11 +43,11 @@ void setup() {
     display.setTextSize(1);
     display.setTextColor(WHITE);
     display.setCursor(0, 0);
-    display.println("Starting...");
+    display.println("Starting BMP180 Sensor...");
     display.display();
 
     if (!bmp.begin()) { //initialize BMP180 sensor
-        Serial.println("Could not find a valid BMP085 sensor, check wiring!");
+        Serial.println("Could not find a valid BMP180 sensor, check wiring!");
         while (1)
             ;
     }
@@ -78,13 +75,17 @@ void loop() {
     display.setTextSize(1);
     display.setCursor(0, 0);
     display.print("BMP180 SENSOR");
-    display.setCursor(0, 5);
+    display.setCursor(0, 15);
     display.print("Temperature: ");
     display.print(temperature);
     display.println(" C");
     display.print("Pressure: ");
     display.print(pressure / 100.0);
     display.println(" hPa");
+    display.setCursor(0, 40);
+    display.println("Press the button to");
+    display.print("get the IP Address");
+    display.display(); //display data
 
     if (digitalRead(buttonPin) == LOW) {
         Serial.println("Button Pressed");
@@ -94,11 +95,11 @@ void loop() {
         display.print("IP: ");
         display.println(WiFi.localIP()); //print IP address
         display.display(); //display data
-        delay(200);
+        delay(500);
     }
 
     server.handleClient(); //handle client requests
-    delay(1000);
+    delay(200);
 }
 
 void handleRoot() {

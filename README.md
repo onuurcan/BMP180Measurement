@@ -1,6 +1,6 @@
 # ESP8266 BMP180 Sensor with Web Server and OLED Display
 
-This project demonstrates how to use an ESP8266 ESP-12E to read temperature and pressure data from a BMP180 sensor, display it on an OLED screen, and provide it via a web server with JSON data.
+This project demonstrates how to use an ESP8266 ESP-12F to read temperature and pressure data from a BMP180 sensor, display it on an OLED screen, and provide it via a web server with JSON data.
 
 ## Project Overview
 
@@ -17,7 +17,7 @@ The ESP8266 reads temperature and pressure data from a BMP180 sensor. This data 
 
 ## Hardware Components
 
-* ESP8266 ESP-12E Development Board
+* ESP8266 ESP-12F Development Board
 * BMP180 Barometric Pressure and Temperature Sensor
 * OLED Display (128x64 pixels, I2C)
 * Push Button (onboard GPIO0)
